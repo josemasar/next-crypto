@@ -1,9 +1,9 @@
+import Image from 'next/image'
 
-
-const TableCoins = ( coins ) => {
+const TableCoins = ( {coins} ) => {
 
     return(
-        <table>
+            <table>
             <thead>
             <tr>
                 <th>Name</th>
@@ -13,9 +13,12 @@ const TableCoins = ( coins ) => {
             </tr>
             </thead>
             <tbody>
-             {coinsList.map( (coin, index) => (
+             {coins.map( (coin, index) => (
                 <tr key={index}>
-                    <td>{coin}</td>
+                    <td>{coin.name}</td>
+                    <td>{coin.symbol}</td>
+                    <td><Image src={coin.image} alt={coin.name} width={20} height={20} /></td>
+                    <td>{coin.current_price}</td>
                 </tr>
              ))} 
             </tbody>

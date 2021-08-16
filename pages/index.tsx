@@ -18,33 +18,11 @@ const Home: NextPage = ( {coins} ) => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-           Welcome to Crypto Type
-        </h1>
-      
-    <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Symbol</th>
-                <th>Current price</th>
-            </tr>
-            </thead>
-            <tbody>
-             {coins.map( (coin, index) => (
-                <tr key={index}>
-                    <td>{coin.name}</td>
-                    <td>{coin.symbol}</td>
-                    <td><Image src={coin.image} alt={coin.name} width={20} height={20} /></td>
-                    <td>{coin.current_price}</td>
-                </tr>
-             ))} 
-            </tbody>
-        </table>
-       
+       <div>
+       <TableCoins coins={coins} />
+       </div>
       </main>
-
+      
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
