@@ -4,11 +4,7 @@ import { GetStaticProps } from 'next'
 import TableCoins from '../components/TableCoins'
 import SearchBar from '../components/SearchBar'
 import NavBar from '../components/NavBar'
-
-let newDate = new Date()
-let date = newDate.getDate()
-let month = newDate.getMonth() + 1
-let year = newDate.getFullYear()
+import Todaysdate from '../components/Todaysdate'
 
 const Home: NextPage = ( {coins} ) => {
 
@@ -20,9 +16,9 @@ const Home: NextPage = ( {coins} ) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar/>
+      <Todaysdate />
       <main >
-        <SearchBar/>
-        <p className="text-center mb-5 font-extrabold"> Today is {`${date}-${month<10?`0${month}`:`${month}`}-${year}`}</p>
+        <SearchBar />
        <TableCoins coins={coins} />
       </main>
     </div>
