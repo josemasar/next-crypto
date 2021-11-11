@@ -24,12 +24,12 @@ const TableCoins = ( { coins } : CoinType ) => {
         <>
         <div className="max-w-5xl mx-auto flex flex-row justify-center sm:rounded-lg">
             <table className="table-auto min-w-full border-2 border-gray-200">
-                <thead className="bg-blue-200 bg-opacity-50">
+                <thead className="bg-black">
                 <tr>
-                    <th className="px-6 py-3 text-xl text-center tracking-wider">Name</th>
-                    <th className="px-6 py-3 text-xl text-center tracking-wider">Symbol</th>
-                    <th className="px-6 py-3 text-xl text-center tracking-wider">Image</th>
-                    <th className="px-6 py-3 text-xl text-center tracking-wider">Current price</th>
+                    <th className="px-6 py-3 text-xl text-center text-white tracking-wider">Name</th>
+                    <th className="px-6 py-3 text-xl text-center text-white tracking-wider">Symbol</th>
+                    <th className="px-6 py-3 text-xl text-center text-white tracking-wider">Image</th>
+                    <th className="px-6 py-3 text-xl text-center text-white tracking-wider">Current price</th>
                 </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
