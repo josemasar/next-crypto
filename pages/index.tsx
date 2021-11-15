@@ -1,13 +1,15 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
+import { useState } from 'react'
 import TableCoins from '../components/TableCoins'
-import SearchBar from '../components/SearchBar'
 import NavBar from '../components/NavBar'
 import Todaysdate from '../components/Todaysdate'
 
 const Home: NextPage = ( {coins} ) => {
 
+  const [search, setSearch]=useState("")
+  
   return (
     <div>
       <Head>
@@ -18,8 +20,13 @@ const Home: NextPage = ( {coins} ) => {
       <NavBar/>
       <Todaysdate />
       <main >
-        <SearchBar />
-       <TableCoins coins={coins} />
+      <div className="max-w-md mx-auto py-12">
+        <input type="text" placeholder="Search a coin"
+        onChange={ e => setSearch(e.target.value)}
+        className="shadow border-0 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline 
+        text-center text-xl font-semibold" />
+        </div>
+       <TableCoins coins={coins} search={search} />
       </main>
     </div>
   )

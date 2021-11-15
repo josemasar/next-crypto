@@ -7,13 +7,19 @@ interface CoinType {
   }
 
 
-const TableCoins = ( { coins } : CoinType ) => {  
+const TableCoins = ( { coins, search } : CoinType ) => {  
+
+//Filter logic
+const filteredCoins = coins.filter((coin) => 
+coin.name.toLowerCase().includes(search.toLowerCase()) 
+| coin.symbol.toLowerCase().includes(search.toLowerCase())
+)
 
 //Pagination logic
   const [currentPage, setCurrentPage] = useState(0);
   const perPage: number = 7
   const pageVisited: number = currentPage * perPage
-  const currentPageData : CoinType = coins.slice(pageVisited, pageVisited + perPage)
+  const currentPageData : CoinType = filteredCoins.slice(pageVisited, pageVisited + perPage)
   const pageCount: number = Math.ceil(coins.length / perPage)
 
   function handlePageClick({ selected } : any ) {
