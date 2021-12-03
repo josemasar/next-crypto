@@ -6,9 +6,21 @@ import TableCoins from '../components/TableCoins'
 import NavBar from '../components/NavBar'
 import Todaysdate from '../components/Todaysdate'
 
-const Home: NextPage = ( {coins} ) => {
+export interface Coin {
+  name: String,
+  symbol: String,
+  image: String,
+  current_price: Number,
+}
 
-  const [search, setSearch]=useState("")
+export interface PageProps {
+  coins: Coin[]
+  search: String | undefined
+}
+
+const Home = ( {coins}: PageProps ) => {
+
+  const [search, setSearch]=useState<String|undefined>("")
   
   return (
     <div>

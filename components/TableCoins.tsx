@@ -1,25 +1,22 @@
 import Image from 'next/image'
-import { useState } from 'react';
+import { useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import { Coin } from '../pages/index'
+import { PageProps } from '../pages/index'
 
-interface CoinType {
-    [key: string]: any
-  }
-
-
-const TableCoins = ( { coins, search } : CoinType ) => {  
+const TableCoins = ( { coins, search }: PageProps ) => {  
 
 //Filter logic
-const filteredCoins = coins.filter((coin) => 
-coin.name.toLowerCase().includes(search.toLowerCase()) 
-| coin.symbol.toLowerCase().includes(search.toLowerCase())
+const filteredCoins = coins.filter((coin: Coin) => 
+coin.name.toLowerCase().includes(search!.toLowerCase()) 
+|| coin.symbol.toLowerCase().includes(search!.toLowerCase())
 )
 
 //Pagination logic
   const [currentPage, setCurrentPage] = useState(0);
   const perPage: number = 7
   const pageVisited: number = currentPage * perPage
-  const currentPageData : CoinType = filteredCoins.slice(pageVisited, pageVisited + perPage)
+  const currentPageData = filteredCoins.slice(pageVisited, pageVisited + perPage)
   const pageCount: number = Math.ceil(coins.length / perPage)
 
   function handlePageClick({ selected } : any ) {
@@ -52,16 +49,17 @@ coin.name.toLowerCase().includes(search.toLowerCase())
         </div>
         <div className="flex flex-row justify-center h-40 mt-4">
             <ReactPaginate 
-                previousLabel={"← Previous"}
-                nextLabel={"Next →"}
-                pageCount={pageCount}
-                onPageChange={handlePageClick}
-                containerClassName={"pagination"}
-                previousLinkClassName={"pagination__link"}
-                nextLinkClassName={"pagination__link"}
-                disabledClassName={"pagination__link--disabled"}
-                activeClassName={"pagination__link--active"}
-            />
+                    previousLabel={"← Previous"}
+                    nextLabel={"Next →"}
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
+                    containerClassName={"pagination"}
+                    previousLinkClassName={"pagination__link"}
+                    nextLinkClassName={"pagination__link"}
+                    disabledClassName={"pagination__link--disabled"}
+                    activeClassName={"pagination__link--active"} 
+                    pageRangeDisplayed={1} 
+                    marginPagesDisplayed={1}            />
         </div>
         </>
     )
